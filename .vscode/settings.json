@@ -1,0 +1,26 @@
+{
+	"editor.autoClosingBrackets": "never",
+	"editor.detectIndentation": true,
+	"editor.formatOnPaste": true,
+	"editor.insertSpaces": false,
+	"editor.minimap.enabled": false,
+	"editor.stablePeek": true,
+	"editor.wordWrap": "wordWrapColumn",
+	"editor.wordWrapColumn": 80,
+	"explorer.confirmDelete": false,
+	"explorer.confirmDragAndDrop": false,
+	"files.eol": "\n",
+	"files.trimTrailingWhitespace": true,
+	"git.ignoreMissingGitWarning": true,
+	"telemetry.enableCrashReporter": false,
+	"telemetry.enableTelemetry": false,
+	"terminal.integrated.shell.windows":
+		"C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+	// "update.channel": "none",
+	// "window.menuBarVisibility": "toggle",
+	"window.zoomLevel": 1,
+	"workbench.colorTheme": "Default High Contrast",
+	"workbench.commandPalette.history": 777,
+	"workbench.statusBar.feedback.visible": false,
+	"workbench.editor.tabSizing": "shrink"
+}

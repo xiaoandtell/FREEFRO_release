@@ -1,0 +1,20 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		//"outDir": "js",
+		"outFile": "js/game.js",
+		"sourceMap": true,
+		"watch": true
+	},
+	"files": [
+		"node_modules/phaser-ce/typescript/box2d.d.ts",
+		"node_modules/phaser-ce/typescript/phaser_box2d.d.ts",
+		"node_modules/phaser-ce/typescript/phaser.comments.d.ts",
+		// resolve duplicate identifiers from phaser_box2d.d.ts:
+		//"node_modules/phaser-ce/typescript/phaser.d.ts",
+		//"node_modules/phaser-ce/typescript/pixi.d.ts"
+	],
+	"include": [
+		"src/**/*.ts"
+	]
+}
