@@ -46,10 +46,20 @@ module XG {
 		game: Gm;
 
 		init(): void {
+			this.initGame();
+			this.initLoad();
+		}
+		private initGame(): void {
 			// fill page with game
 			this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
 			// for accurate fps
 			this.game.time.advancedTiming = true;
+		}
+		private initLoad(): void {
+			var gm: Gm = this.game;
+			var textLoad: Phaser.Text = gm.add.text(0, 0,
+				'LOADING.', { fill: Color.toStringHex(Color.WHITE) });
+			gm.load.onLoadComplete.addOnce(textLoad.destroy, textLoad);
 		}
 
 		preload(): void {
@@ -66,8 +76,11 @@ module XG {
 				Ks.fenceHit, Ks.footStep, Ks.gameOn, Ks.gameOver,
 				Ks.gravitySpike, Ks.none, Ks.score, Ks.timeTick, Ks.timeTock
 			];
+			var extMp3: string = '.mp3',
+				extOgg: string = '.ogg'; // for Firefox browser
 			for (var k of ks) {
-				this.game.load.audio(k, dir + k + '.ogg');
+				var pathK: string = dir + k;
+				this.game.load.audio(k, [pathK + extMp3, pathK + extOgg]);
 			}
 		}
 		private preloadFonts(): void {
@@ -142,8 +155,8 @@ module XG {
 		EndContact(contact: BC): void {
 			this.contact(contact, Ks.handleEndContact);
 		}
-		PreSolve(contact: BC, oldManifold: box2d.b2Manifold): void {
-			this.contact(contact, Ks.handlePreSolve/*, oldManifold*/);
+		PreSolve(contact: BC, _oldManifold: box2d.b2Manifold): void {
+			this.contact(contact, Ks.handlePreSolve/*, _oldManifold*/);
 		}
 
 		private contact(contact: BC, kFunction: string): void {

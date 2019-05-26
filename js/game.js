@@ -11,7 +11,7 @@ var __extends = (this && this.__extends) || (function () {
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
             function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
         return extendStatics(d, b);
-    }
+    };
     return function (d, b) {
         extendStatics(d, b);
         function __() { this.constructor = d; }
@@ -96,10 +96,19 @@ var XG;
             return _super !== null && _super.apply(this, arguments) || this;
         }
         GmStPlay.prototype.init = function () {
+            this.initGame();
+            this.initLoad();
+        };
+        GmStPlay.prototype.initGame = function () {
             // fill page with game
             this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
             // for accurate fps
             this.game.time.advancedTiming = true;
+        };
+        GmStPlay.prototype.initLoad = function () {
+            var gm = this.game;
+            var textLoad = gm.add.text(0, 0, 'LOADING.', { fill: Color.toStringHex(Color.WHITE) });
+            gm.load.onLoadComplete.addOnce(textLoad.destroy, textLoad);
         };
         GmStPlay.prototype.preload = function () {
             this.preloadAudio();
@@ -115,9 +124,11 @@ var XG;
                 Ks.fenceHit, Ks.footStep, Ks.gameOn, Ks.gameOver,
                 Ks.gravitySpike, Ks.none, Ks.score, Ks.timeTick, Ks.timeTock
             ];
+            var extMp3 = '.mp3', extOgg = '.ogg'; // for Firefox browser
             for (var _i = 0, ks_1 = ks; _i < ks_1.length; _i++) {
                 var k = ks_1[_i];
-                this.game.load.audio(k, dir + k + '.ogg');
+                var pathK = dir + k;
+                this.game.load.audio(k, [pathK + extMp3, pathK + extOgg]);
             }
         };
         GmStPlay.prototype.preloadFonts = function () {
@@ -195,8 +206,8 @@ var XG;
         GmContactListener.prototype.EndContact = function (contact) {
             this.contact(contact, Ks.handleEndContact);
         };
-        GmContactListener.prototype.PreSolve = function (contact, oldManifold) {
-            this.contact(contact, Ks.handlePreSolve /*, oldManifold*/);
+        GmContactListener.prototype.PreSolve = function (contact, _oldManifold) {
+            this.contact(contact, Ks.handlePreSolve /*, _oldManifold*/);
         };
         GmContactListener.prototype.contact = function (contact, kFunction) {
             var fA = contact.GetFixtureA(), eA = fA.GetUserData();
