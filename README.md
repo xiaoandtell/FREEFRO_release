@@ -34,7 +34,7 @@ Contact XJ if you wish to arrange a for-profit license.
 * Visual Studio Code + Debugger For Firefox extension
 * TypeScript
 * Phaser CE
-* Box2D Phaser plugin - Code is obfuscated at the request of its author, but the Typescript definition files still significantly maintains its workability.
+* Box2D Phaser plugin - Code is obfuscated at the request of its author. Still significantly workable with TypeScript definition file.
 
 # Getting Started
 
